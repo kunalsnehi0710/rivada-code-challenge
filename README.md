@@ -8,7 +8,7 @@ Image Processor Setup
  - S3 bucket
  - Lambda Function
  - Cloudwatch Event Trigger to invoke Lambda function
- - AWS Batch EC2 Compute Environment (to process 32 GB images, we cannot use Fargate due to max limit of 30GB RAM with Fargate)
+ - AWS Batch EC2 Compute Environment
  - AWS Batch Job Definition
  - AWS Batch Job-queue
  - AWS Batch Job
