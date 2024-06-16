@@ -1,0 +1,37 @@
+image: hashicorp/terraform:light
+
+stages:
+  - validate
+  - plan
+  - apply
+
+variables:
+  TF_ROOT: ./terraform/
+  AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY_ID
+  AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ACCESS_KEY
+  AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION
+
+before_script:
+  - cd ${TF_ROOT}
+  - terraform init
+
+validate:
+  stage: validate
+  script:
+    - terraform validate
+
+plan:
+  stage: plan
+  script:
+    - terraform plan -out tfplan
+  artifacts:
+    paths:
+      - tfplan
+
+apply:
+  stage: apply
+  script:
+    - terraform apply tfplan
+  when: manual
+  dependencies:
+    - plan
