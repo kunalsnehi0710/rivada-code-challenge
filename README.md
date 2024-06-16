@@ -16,6 +16,7 @@ Image Processor Setup
  - IAM Roles/Policies
 
 
+
 **How it works?**
 
 User or program uploads raw images to S3 bucket, from where a cloudwatch event triggers to invoke Lambda function. Lambda function is designed to schedule AWS Batch Jobs on EC2 compute environment which pulls docker image from ECR registry and executes Python app to process these large images and eventually publishes the transformed images to the destination path on S3 bucket using AWS SDK on EC2.
@@ -25,11 +26,15 @@ User or program uploads raw images to S3 bucket, from where a cloudwatch event t
 **Further scope of improvement**: We can also include the use of Spot instances instead of regular EC2 if the image transformation operation is not mission-critical.
 
 
+
+
+
 **Terraform code under terraform/** :
 
 - aws_batch.tf
 - ecr.tf
 - s3_lambda.tf
+
 
 
 **Gitlab CI script**:
