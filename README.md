@@ -8,7 +8,7 @@ Image Processor Setup
  - S3 bucket
  - Lambda Function
  - Cloudwatch Event Trigger to invoke Lambda function
- - AWS Batch EC2 Compute Environment
+ - AWS Batch EC2 Compute Environment (EC2 is used instead of serverless Fargate solution due to max limit of 30 GB RAM with Fargate)
  - AWS Batch Job Definition
  - AWS Batch Job-queue
  - AWS Batch Job
